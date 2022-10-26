@@ -6,4 +6,9 @@ export default defineConfig({
   },
   routes: [{ path: '/', component: '@/pages/index' }],
   fastRefresh: {},
+  extraPostCSSPlugins: [
+    require('tailwindcss')({
+      config: './tailwind.config.ts',
+    }),
+  ],
 });
