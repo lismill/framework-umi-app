@@ -2,7 +2,15 @@
 **/*.svg
 **/*.ejs
 **/*.html
-package.json
+*.png
+*.lock
+.history
 .umi
 .umi-production
 .umi-test
+.umirc.ts
+.vscode/settings.json
+/dist
+/build
+/public
+package.json
