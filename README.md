@@ -1,19 +1,41 @@
 # framework-umi-app
 
-<!-- Getting Started -->
-<details>
-<summary>Getting Started</summary>
+这是一个基于 UmiJS 二次封装的前端业务开发框架
 
-### Install dependencies,
+<!-- 开始说明 -->
+<details>
+<summary>开始说明</summary>
+
+## 依赖项
+| 名称      | 使用版本    |
+| ----------- | ----------- |
+| node.js     | 16.0.0      |
+| npm         | 7.10.0      |
+| umi         | 3.5.35      |
+| react       | 17.x        |
+| react-dom   | 17.x        |
+
+## 安装依赖
 
 ``` bash
 npm install
 ```
 
-### Start the dev server,
+## 启动服务
 
 ``` bash
 npm run start
+npm run start:dev
+npm run start:pre
+npm run start:prod
+```
+## 打包编译
+
+``` bash
+npm run build
+npm run build:dev
+npm run build:pre
+npm run build:prod
 ```
 </details>
 
@@ -21,12 +43,12 @@ npm run start
 <details>
 <summary>配置 Tailwind CSS</summary>
 
-### 安装兼容 PostCSS7 版本的 Tailwind CSS
+## 安装兼容 PostCSS7 版本的 Tailwind CSS
 ```bash
 npm install --save-dev tailwindcss@npm:@tailwindcss/postcss7-compat
 ```
 
-### 配置文件
+## 配置文件
 `.umirc.ts`
 ``` js
 extraPostCSSPlugins: [
