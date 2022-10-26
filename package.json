@@ -15,17 +15,11 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "**/*.{js,jsx,tsx,ts,less,md,json}": [
-      "npm run prettier"
-    ],
     "**/*.{js,jsx,tsx,ts}": [
       "npm run lint:js"
     ],
     "**/*.{css,less}": [
       "npm run lint:style"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
     ]
   },
   "dependencies": {
