@@ -6,3 +6,7 @@ declare module '*.svg' {
   const url: string;
   export default url;
 }
+declare const globalConfig: {
+  UMI_CUSTOM_ENV: string;
+  UMI_BASE_API: string;
+};

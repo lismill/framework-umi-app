@@ -77,7 +77,7 @@ module.exports = {
 </details>
 
 <details>
-<summary>代码风格 & 自动格式化 & 提交校验</summary>
+<summary>配置代码风格 & 自动格式化 & 提交校验</summary>
 
 ## 配置思路
 - prettier 负责代码美化
@@ -157,6 +157,82 @@ module.exports = {
     ],
   },
 };
+```
+</details>
+
+<details>
+<summary>配置多环境变量</summary>
+
+## 安装依赖
+`npm install --save-dev cross-env`
+
+## 配置文件
+`package.json`
+``` json
+"start": "npm run start:dev",
+"start:dev": "cross-env UMI_ENV=dev umi dev",
+"start:pre": "cross-env UMI_ENV=pre umi dev",
+"start:prod": "cross-env UMI_ENV=prod umi dev",
+"build": "npm run build:dev",
+"build:dev": "cross-env UMI_ENV=dev umi build",
+"build:pre": "cross-env UMI_ENV=pre umi build",
+"build:prod": "cross-env UMI_ENV=prod umi build",
+```
+`.umirc.dev.ts`
+``` ts
+export default {
+  define: {
+    globalConfig: {
+      UMI_CUSTOM_ENV: 'dev',
+      UMI_BASE_API: 'http://www.dev.com',
+    },
+  },
+};
+```
+`.umirc.pre.ts`
+``` ts
+export default {
+  define: {
+    globalConfig: {
+      UMI_CUSTOM_ENV: 'pre',
+      UMI_BASE_API: 'http://www.pre.com',
+    },
+  },
+};
+```
+`.umirc.prod.ts`
+``` ts
+export default {
+  define: {
+    globalConfig: {
+      UMI_CUSTOM_ENV: 'prod',
+      UMI_BASE_API: 'http://www.prod.com',
+    },
+  },
+};
+```
+## 类型提示
+`typings.d.ts`
+``` ts
+declare const globalConfig: {
+  UMI_CUSTOM_ENV: string;
+  UMI_BASE_API: string;
+  // ...
+};
+```
+
+## 使用方法
+`index.tsx`
+``` tsx
+console.log(globalConfig.UMI_CUSTOM_ENV);
+
+export default function IndexPage() {
+  return (
+    <div>
+      <h1>{globalConfig.UMI_BASE_API}</h1>
+    </div>
+  );
+}
 ```
 </details>
 
