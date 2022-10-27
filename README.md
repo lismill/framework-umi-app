@@ -105,7 +105,7 @@ module.exports = {
 - prettier 负责代码美化
 - eslint 负责代码质量检测
 - vscode 负责保存代码自动校验和格式化
-- lint-staged 负责提交代码前的校验
+- git-hooks 负责代码提交前的校验
 
 ## 安装依赖
 ``` bash
@@ -256,6 +256,94 @@ export default function IndexPage() {
   );
 }
 ```
+</details>
+
+<details>
+<summary>配置式路由</summary>
+
+## 配置文件
+`.umirc.ts`
+``` ts
+import { defineConfig } from 'umi';
+import router from './src/router';
+
+export default defineConfig({
+  routes: router,
+});
+```
+
+`./src/router/index.ts`
+``` ts
+import common from './common';
+import user from './user';
+
+export default [
+  {
+    exact: false,
+    path: '/',
+    component: '@/pages/_layout',
+    routes: [
+      ...common,
+      ...user,
+      { component: '@/pages/_not-found' }
+    ],
+  },
+];
+```
+`./src/router/common.ts`
+``` ts
+export default [
+  { exact: true, path: '/', component: '@/pages/home' },
+  { exact: true, path: '/login', title: '登录页面', component: '@/pages/_login', meta: {}},
+];
+```
+`./src/router/user.ts`
+``` ts
+export default [
+  { exact: true, path: '/user', title: '用户管理', component: '@/pages/user' },
+];
+```
+
+## 问题解决
+``` ts
+问：
+运行时怎么全局监听路由切换？
+
+答：
+`./src/app.tsx`
+export function onRouteChange({ matchedRoutes }: { matchedRoutes: any[] }) {
+  if (matchedRoutes.length) {
+    document.title = matchedRoutes[matchedRoutes.length - 1].route.title ?? '';
+  }
+}
+
+问：
+怎么配置整体框架结构和嵌套路由？
+
+答：
+`./src/pages/_layout/index.tsx`
+import { withRouter } from 'umi';
+
+export default withRouter((props: any) => {
+  // 不带整体布局结构的视图
+  if (['/login'].includes(props.location.pathname)) {
+    return <div>{props.children}</div>;
+  }
+
+  // 带整体布局结构的视图
+  return (
+    <>
+      <div>Header</div>
+      {props.children}
+      <div>Footer</div>
+    </>
+  );
+});
+```
+</details>
+
+<details>
+<summary>配置 VSCode 常用代码片段</summary>
 </details>
 
 <!-- <details>
