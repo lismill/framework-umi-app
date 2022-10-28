@@ -12,4 +12,7 @@ export default defineConfig({
       config: './tailwind.config.ts',
     }),
   ],
+  theme: {
+    "primary-color": "#1966ff",
+  }
 });

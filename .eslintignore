@@ -3,3 +3,4 @@
 .history
 /dist
 /build
+tailwind.config.ts

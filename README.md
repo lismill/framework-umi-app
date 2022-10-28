@@ -343,6 +343,10 @@ export default withRouter((props: any) => {
 </details>
 
 <details>
+<summary>配置系统框架结构</summary>
+</details>
+
+<details>
 <summary>配置 VSCode 常用代码片段</summary>
 </details>
 

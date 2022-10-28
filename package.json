@@ -13,6 +13,7 @@
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
     "prettier": "prettier --write **/*.{js,jsx,tsx,ts,less,md,json}",
+    "lint": "umi g tmp && npm run lint:js && npm run lint:style && npm run lint:prettier",
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
     "lint:prettier": "prettier -c --write src/**/* --end-of-line auto",
     "lint:style": "stylelint src/**/*.less --syntax less"
@@ -31,6 +32,7 @@
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
     "react": "17.x",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "17.x",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "umi": "^3.5.35"

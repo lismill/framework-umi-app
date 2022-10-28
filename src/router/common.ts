@@ -1,5 +1,5 @@
 export default [
-  { exact: true, path: '/', component: '@/pages/home' },
+  { exact: true, path: '/', title: '管理系统', component: '@/pages/home' },
   {
     exact: true,
     path: '/login',
