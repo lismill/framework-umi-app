@@ -1,5 +1,11 @@
 export default [
-  { exact: true, path: '/', title: '管理系统', component: '@/pages/dashboard' },
+  {
+    exact: true,
+    path: '/',
+    title: '管理系统',
+    component: '@/pages/dashboard',
+    meta: { icon: 'MenuDashboard' },
+  },
   {
     exact: true,
     path: '/login',

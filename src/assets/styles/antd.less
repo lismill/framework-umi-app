@@ -1,0 +1,40 @@
+// ant-menu
+.ant-menu {
+  color: #4e5969;
+}
+.ant-menu-sub.ant-menu-inline {
+  background: none;
+}
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+  border-right: none;
+  border-radius: 0 8px 0 0;
+}
+.ant-menu-inline .ant-menu-selected::after,
+.ant-menu-inline .ant-menu-item-selected::after {
+  display: none;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #ebf3ff;
+  border-radius: 2px;
+}
+.ant-menu-submenu-expand-icon,
+.ant-menu-submenu-arrow {
+  width: 2px;
+  color: #9ca5ae;
+}
+// 一级菜单边距
+.ant-menu > .ant-menu-item,
+.ant-menu > .ant-menu-submenu > .ant-menu-submenu-title {
+  padding-left: 12px !important;
+}
+// 二级菜单边距
+.ant-menu .ant-menu-submenu .ant-menu .ant-menu-item,
+.ant-menu .ant-menu-submenu .ant-menu .ant-menu-submenu .ant-menu-submenu-title {
+  padding-left: 38px !important;
+}
+// 三级菜单边距
+.ant-menu .ant-menu-submenu .ant-menu .ant-menu-submenu .ant-menu .ant-menu-item {
+  padding-left: 52px !important;
+}

@@ -1,7 +1,9 @@
 import router from '@/router';
 import { Menu } from 'antd';
 import React from 'react';
+import Scrollbars from 'react-custom-scrollbars';
 import { history, useLocation, useRouteMatch } from 'umi';
+import { iconMapping } from './layout-aside-menu';
 
 /**
  * 获取左侧菜单
@@ -17,6 +19,7 @@ const computedRoutes = (routes: any) => {
         children: item.routes ? computedRoutes(item.routes) : null,
         label: item.title,
         ...item.meta,
+        icon: iconMapping[item?.meta?.icon],
       };
     }
   });
@@ -28,20 +31,20 @@ const LayoutAside: React.FC = () => {
   const defaultSelectedKeys: string[] = [useLocation().pathname];
   const defaultOpenKeys: string[] = [
     useRouteMatch().path,
+    `/${useLocation().pathname.split('/')[1]}`,
     useLocation().pathname.substring(0, useLocation().pathname.lastIndexOf('/')),
-    // '/develop',
-    // '/develop/others',
-    // '/develop/others/affix',
   ];
   return (
-    <div className="layout-aside bg-white">
-      <Menu
-        defaultOpenKeys={defaultOpenKeys}
-        defaultSelectedKeys={defaultSelectedKeys}
-        mode="inline"
-        items={items}
-        onClick={(item) => history.push(item.key)}
-      />
+    <div className="layout-aside bg-white p-8">
+      <Scrollbars>
+        <Menu
+          defaultOpenKeys={defaultOpenKeys}
+          defaultSelectedKeys={defaultSelectedKeys}
+          mode="inline"
+          items={items}
+          onClick={(item) => history.push(item.key)}
+        />
+      </Scrollbars>
     </div>
   );
 };

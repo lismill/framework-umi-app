@@ -3,6 +3,7 @@ export default [
     path: '/develop',
     title: '开发者工具',
     component: '@/pages/_layout/layout-content',
+    meta: { icon: 'MenuDashboard' },
     routes: [
       {
         exact: true,

@@ -5,13 +5,11 @@ import LayoutHeader from './layout-header';
 
 const Layout: React.FC = (props: any) => {
   return (
-    <div className="layout">
+    <div className="layout collapsed">
       <LayoutHeader />
       <div className="layout-footer">
         <LayoutAside />
-        <Scrollbars style={{ height: 'calc(100%)' }}>
-          <div className="layout-content">{props.children}</div>
-        </Scrollbars>
+        <Scrollbars style={{ height: 'calc(100%)' }}>{props.children}</Scrollbars>
       </div>
     </div>
   );

@@ -12,6 +12,9 @@ export default defineConfig({
       config: './tailwind.config.ts',
     }),
   ],
+  links: [
+    { rel: 'icon', href: "./favicon.ico"}
+  ],
   theme: {
     "primary-color": "#1966ff",
   }
