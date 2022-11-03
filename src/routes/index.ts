@@ -1,12 +1,12 @@
 import common from './common';
 import develop from './develop';
-import user from './user';
+import system from './system';
 
 export default [
   {
-    exact: false,
     path: '/',
     component: '@/pages/_layout/layout-index',
-    routes: [...common, ...user, ...develop, { component: '@/pages/_not-found' }],
+    routes: [...common, ...system, ...develop, { component: '@/pages/_not-found' }],
   },
+  { component: '@/pages/_not-found' },
 ];

@@ -265,21 +265,20 @@ export default function IndexPage() {
 `.umirc.ts`
 ``` ts
 import { defineConfig } from 'umi';
-import router from './src/router';
+import routes from './src/routes';
 
 export default defineConfig({
-  routes: router,
+  routes,
 });
 ```
 
-`./src/router/index.ts`
+`./src/routes/index.ts`
 ``` ts
 import common from './common';
 import user from './user';
 
 export default [
   {
-    exact: false,
     path: '/',
     component: '@/pages/_layout',
     routes: [
@@ -290,17 +289,17 @@ export default [
   },
 ];
 ```
-`./src/router/common.ts`
+`./src/routes/common.ts`
 ``` ts
 export default [
-  { exact: true, path: '/', component: '@/pages/home' },
-  { exact: true, path: '/login', title: '登录页面', component: '@/pages/_login', meta: {}},
+  { path: '/', component: '@/pages/home' },
+  { path: '/login', title: '登录页面', component: '@/pages/_login', meta: {}},
 ];
 ```
-`./src/router/user.ts`
+`./src/routes/user.ts`
 ``` ts
 export default [
-  { exact: true, path: '/user', title: '用户管理', component: '@/pages/user' },
+  { path: '/user', title: '用户管理', component: '@/pages/user' },
 ];
 ```
 

@@ -1,11 +1,11 @@
 import { defineConfig } from 'umi';
-import router from './src/router';
+import routes from './src/routes';
 
 export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  routes: router,
+  routes,
   fastRefresh: {},
   extraPostCSSPlugins: [
     require('tailwindcss')({

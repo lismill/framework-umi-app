@@ -3,13 +3,12 @@ export default [
     path: '/develop',
     title: '开发者工具',
     component: '@/pages/_layout/layout-content',
-    meta: { icon: 'MenuDashboard' },
+    meta: { icon: 'MenuDevelop' },
     routes: [
       {
-        exact: true,
-        path: '/develop/list',
-        title: '测试列表',
-        component: '@/pages/develop/list',
+        path: '/develop/table',
+        title: '基础表格',
+        component: '@/pages/develop/table',
       },
       {
         path: '/develop/others',
@@ -17,7 +16,6 @@ export default [
         component: '@/pages/_layout/layout-content',
         routes: [
           {
-            exact: true,
             path: '/develop/others/affix',
             title: '固钉',
             component: '@/pages/develop/others/affix',

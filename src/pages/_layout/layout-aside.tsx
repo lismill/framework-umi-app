@@ -1,20 +1,19 @@
-import router from '@/router';
+import routes from '@/routes';
+import { iconMapping } from '@/routes/icon';
 import { Menu } from 'antd';
 import React from 'react';
 import Scrollbars from 'react-custom-scrollbars';
 import { history, useLocation, useRouteMatch } from 'umi';
-import { iconMapping } from './layout-aside-menu';
 
 /**
  * 获取左侧菜单
- * @param routes
+ * @param data
  * @returns
  */
-const computedRoutes = (routes: any) => {
-  return routes.map((item: any) => {
+const computedRoutes = (data: any) => {
+  return data.map((item: any) => {
     if (!item?.meta?.hidden) {
       return {
-        exact: '',
         key: item.path,
         children: item.routes ? computedRoutes(item.routes) : null,
         label: item.title,
@@ -24,7 +23,9 @@ const computedRoutes = (routes: any) => {
     }
   });
 };
-const ROUTES = router[0].routes.filter((item: any) => item.path && !['/login'].includes(item.path));
+const ROUTES = (routes[0] as any).routes.filter(
+  (item: any) => item.path && !['/login'].includes(item.path),
+);
 const items = computedRoutes(ROUTES);
 
 const LayoutAside: React.FC = () => {
@@ -38,6 +39,7 @@ const LayoutAside: React.FC = () => {
     <div className="layout-aside bg-white p-8">
       <Scrollbars>
         <Menu
+          style={{ width: 'calc(100% - 1px)' }}
           defaultOpenKeys={defaultOpenKeys}
           defaultSelectedKeys={defaultSelectedKeys}
           mode="inline"
