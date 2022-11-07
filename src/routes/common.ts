@@ -5,12 +5,4 @@ export default [
     component: '@/pages/dashboard',
     meta: { icon: 'MenuDashboard' },
   },
-  {
-    path: '/login',
-    title: '登录页面',
-    component: '@/pages/_login',
-    meta: {
-      hidden: true,
-    },
-  },
 ];

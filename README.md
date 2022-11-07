@@ -98,6 +98,7 @@ module.exports = {
 ```
 </details>
 
+<!-- 配置代码风格 & 自动格式化 & 提交校验 -->
 <details>
 <summary>配置代码风格 & 自动格式化 & 提交校验</summary>
 
@@ -182,6 +183,7 @@ module.exports = {
 ```
 </details>
 
+<!-- 配置多环境变量 -->
 <details>
 <summary>配置多环境变量</summary>
 
@@ -258,8 +260,9 @@ export default function IndexPage() {
 ```
 </details>
 
+<!-- 配置式系统路由 -->
 <details>
-<summary>配置式路由</summary>
+<summary>配置式系统路由</summary>
 
 ## 配置文件
 `.umirc.ts`
@@ -275,31 +278,49 @@ export default defineConfig({
 `./src/routes/index.ts`
 ``` ts
 import common from './common';
-import user from './user';
+import develop from './develop';
+import system from './system';
 
 export default [
+  { exact: true, path: '/login', component: '@/pages/_login' },
   {
     path: '/',
-    component: '@/pages/_layout',
+    component: '@/pages/_layout/layout-index',
+    routes: [...common, ...system, ...develop, { component: '@/pages/_not-found' }],
+  },
+  { component: '@/pages/_not-found' },
+];
+```
+`./src/routes/develop.ts`
+``` ts
+export default [
+  {
+    path: '/develop',
+    title: '开发者工具',
+    component: '@/pages/_layout/layout-content',
+    meta: { icon: 'MenuDevelop' },
     routes: [
-      ...common,
-      ...user,
-      { component: '@/pages/_not-found' }
+      {
+        path: '/develop/table',
+        title: '基础表格',
+        component: '@/pages/develop/table',
+      },
+      {
+        path: '/develop/others',
+        title: '其他组件',
+        component: '@/pages/_layout/layout-content',
+        routes: [
+          {
+            path: '/develop/others/affix',
+            title: '固钉',
+            component: '@/pages/develop/others/affix',
+          },
+          { component: '@/pages/_not-found', meta: { hidden: true } },
+        ],
+      },
+      { component: '@/pages/_not-found', meta: { hidden: true } },
     ],
   },
-];
-```
-`./src/routes/common.ts`
-``` ts
-export default [
-  { path: '/', component: '@/pages/home' },
-  { path: '/login', title: '登录页面', component: '@/pages/_login', meta: {}},
-];
-```
-`./src/routes/user.ts`
-``` ts
-export default [
-  { path: '/user', title: '用户管理', component: '@/pages/user' },
 ];
 ```
 
@@ -320,31 +341,51 @@ export function onRouteChange({ matchedRoutes }: { matchedRoutes: any[] }) {
 怎么配置整体框架结构和嵌套路由？
 
 答：
-`./src/pages/_layout/index.tsx`
-import { withRouter } from 'umi';
 
-export default withRouter((props: any) => {
-  // 不带整体布局结构的视图
-  if (['/login'].includes(props.location.pathname)) {
-    return <div>{props.children}</div>;
-  }
+`./src/pages/_layout/layout-content.tsx`
+export default (props: any) => {
+  return <div className="layout-content">{props.children}</div>;
+};
 
-  // 带整体布局结构的视图
+`./src/pages/_layout/layout-index.tsx`
+import Scrollbars from 'react-custom-scrollbars';
+import LayoutAside from './layout-aside';
+import LayoutHeader from './layout-header';
+
+export default (props: any) => {
   return (
-    <>
-      <div>Header</div>
-      {props.children}
-      <div>Footer</div>
-    </>
+    <div className="layout collapsed">
+      <LayoutHeader />
+      <div className="layout-footer">
+        <LayoutAside />
+        <Scrollbars style={{ height: 'calc(100%)' }}>{props.children}</Scrollbars>
+      </div>
+    </div>
   );
-});
+};
+
+`./src/routes/develop.ts`
+export default [
+  {
+    path: '/',
+    component: '@/pages/_layout/layout-index',
+    routes: [],
+  },
+];
 ```
 </details>
 
+<!-- 配置系统框架结构 -->
 <details>
 <summary>配置系统框架结构</summary>
+
+可以自由切换 `固定宽度` `自适应宽度` 两种布局模式
+
+![固定宽度](https://i.postimg.cc/Cw4DVzvm/image.png "固定宽度")
+![自适应宽度](https://i.postimg.cc/ZTCqDRX9/image.png "自适应宽度")
 </details>
 
+<!-- 配置 VSCode 常用代码片段 -->
 <details>
 <summary>配置 VSCode 常用代码片段</summary>
 </details>

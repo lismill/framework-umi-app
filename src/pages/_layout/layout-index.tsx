@@ -1,9 +1,8 @@
-import React from 'react';
 import Scrollbars from 'react-custom-scrollbars';
 import LayoutAside from './layout-aside';
 import LayoutHeader from './layout-header';
 
-const Layout: React.FC = (props: any) => {
+export default (props: any) => {
   return (
     <div className="layout collapsed">
       <LayoutHeader />
@@ -14,5 +13,3 @@ const Layout: React.FC = (props: any) => {
     </div>
   );
 };
-
-export default Layout;

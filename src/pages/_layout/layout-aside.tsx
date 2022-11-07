@@ -23,7 +23,7 @@ const computedRoutes = (data: any) => {
     }
   });
 };
-const ROUTES = (routes[0] as any).routes.filter(
+const ROUTES = (routes[1] as any).routes.filter(
   (item: any) => item.path && !['/login'].includes(item.path),
 );
 const items = computedRoutes(ROUTES);

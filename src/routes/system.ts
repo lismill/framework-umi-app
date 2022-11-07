@@ -15,6 +15,7 @@ export default [
         title: '角色管理',
         component: '@/pages/system/role',
       },
+      { component: '@/pages/_not-found', meta: { hidden: true } },
     ],
   },
 ];

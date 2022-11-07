@@ -20,8 +20,10 @@ export default [
             title: '固钉',
             component: '@/pages/develop/others/affix',
           },
+          { component: '@/pages/_not-found', meta: { hidden: true } },
         ],
       },
+      { component: '@/pages/_not-found', meta: { hidden: true } },
     ],
   },
 ];
