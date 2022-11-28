@@ -1,4 +1,4 @@
-// ant-menu
+// Menu
 .ant-menu {
   color: #4e5969;
 }
@@ -24,6 +24,12 @@
   width: 2px;
   color: #9ca5ae;
 }
+ul.ant-menu li.ant-menu-item {
+  border-radius: 2px;
+  &:hover {
+    background-color: #ebf3ff;
+  }
+}
 // 一级菜单边距
 .ant-menu > .ant-menu-item,
 .ant-menu > .ant-menu-submenu > .ant-menu-submenu-title {
@@ -37,4 +43,9 @@
 // 三级菜单边距
 .ant-menu .ant-menu-submenu .ant-menu .ant-menu-submenu .ant-menu .ant-menu-item {
   padding-left: 53px !important;
+}
+
+// Form
+.ant-form-item {
+  margin-bottom: 16px;
 }

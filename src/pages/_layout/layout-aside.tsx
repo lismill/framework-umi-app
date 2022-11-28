@@ -36,7 +36,7 @@ const LayoutAside: React.FC = () => {
     useLocation().pathname.substring(0, useLocation().pathname.lastIndexOf('/')),
   ];
   return (
-    <div className="layout-aside bg-white p-8">
+    <div className="layout-aside bg-white pt-[6px] pr-[8px] pb-[8px] pl-[8px]">
       <Scrollbars>
         <Menu
           style={{ width: 'calc(100% - 1px)' }}

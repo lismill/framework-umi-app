@@ -19,10 +19,10 @@ const LayoutHeader: React.FC = () => {
 
   return (
     <div className="bg-white layout-header">
-      <div className="flex justify-between pl-12 pr-16 layout-header-container">
+      <div className="flex justify-between pl-[12px] pr-[16px] layout-header-container">
         <div className="flex items-center left">
           {/* <Logo style={{ width: 32, height: 32, color: '#e74e3d' }} /> */}
-          {/* <span className="ml-4 text-lg font-medium text-gray-600">后台管理中心</span> */}
+          {/* <span className="ml-[4px] text-lg font-medium text-gray-600">后台管理中心</span> */}
         </div>
         <div className="flex items-center right">
           <div className="flex items-center cursor-pointer" onClick={setLayoutId}>
